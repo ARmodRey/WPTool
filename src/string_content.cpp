@@ -110,3 +110,21 @@ std::string WPTool::string_content::operator[](int index){
     return components.at(index);
 }
 
+// function have
+// param 1: search char 
+bool WPTool::string_content::have(char sim){
+    if(this->object->find(sim) != std::string::npos){
+        return true;
+    }
+    return false;
+}
+
+// function have 
+// param 1: search string
+bool WPTool::string_content::have(std::string str){
+    if(this->object->find(str) != std::string::npos){
+        return true;
+    }
+    return false;
+}
+

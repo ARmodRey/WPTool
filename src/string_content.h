@@ -25,7 +25,6 @@ namespace WPTool{
         std::string operator[](int index);    // return component from index
         bool have(char sim);                  // if sentence have char return true
         bool have(std::string str);           // if sentence have element return true
-        bool have(std::string[]);             // if sentence have element of array return true
         int qual_components_with(char sim);   // return number of components with char
         int component_number_with(char sim);  // return component with char
     };
