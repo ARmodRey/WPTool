@@ -15,6 +15,7 @@ namespace WPTool{
         std::vector<std::string> components; // vector with elements of string
     public:
         string_content(); // constructors
+        string_content(std::string source);
         string_content(std::string source, std::string delim);
         ~string_content(); // destructor
         void set_string(std::string source);   // set string to class

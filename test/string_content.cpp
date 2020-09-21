@@ -30,6 +30,29 @@ WPTool::string_content::string_content(std::string source, std::string delim){
 #endif
 }
 
+// class constructor 
+// param 1: source string to retrieve content
+WPTool::string_content::string_content(std::string source){
+    this->object = new std::string(source); // init object of string
+    this->delim = new std::string(""); // init object of delimiter
+#ifdef WIN32 
+    char* token, * next_token = NULL, p[1024];
+	strcpy_s(p, source);
+	token = strtok_s(p, this->delim->c_str(), &next_token);
+	for (int i = 0; token != NULL; token = strtok_s(NULL, this->delim->c_str(), &next_token), i++)
+		parts_of_string[i] = token;
+	delete token, next_token;
+#else
+    char* token, p[source.length()];
+	strcpy(p, source.c_str());
+	token = strtok(p, this->delim->c_str());
+	for (int i = 0; token != NULL; token = strtok(NULL, this->delim->c_str()), i++){
+        components.push_back(token);
+    }
+	delete token;
+#endif
+}
+
 // class destructor
 WPTool::string_content::~string_content(){
     if(!components.empty()){
