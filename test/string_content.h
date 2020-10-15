@@ -18,7 +18,7 @@ namespace WPTool{
         string_content(std::string source);
         string_content(std::string source, std::string delim);
         ~string_content(); // destructor
-        void set_string(std::string source);   // set string to class
+        void set_string(std::string source);  // set string to class
         void set_delimetr(std::string delim); // set delimiter to class
         std::string get_delim();              // return delimiter
         std::string get_string();             // return string
@@ -30,7 +30,6 @@ namespace WPTool{
         int qual_components_with(char sim);   // return number of components with char
         int component_number_with(char sim);  // return component with char
     };
-
 
 };
 

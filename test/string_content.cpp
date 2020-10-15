@@ -127,7 +127,7 @@ void WPTool::string_content::set_delimetr(std::string delim){
 #endif
 }
 
-// operatorr -> []
+// operator -> []
 // param 1: index of component
 std::string WPTool::string_content::operator[](int index){
     return components.at(index);

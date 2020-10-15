@@ -7,17 +7,25 @@
 
 namespace WPTool{
 
+    // contraction for std::vector<std::string> string_vect ---> string vector
+    typedef std::vector<std::string> string_vect; 
+
+    // function to split a string 
+    string_vect split_string(std::string source); // separates with a space
+    string_vect split_string(std::string source, std::string delim); // separates with a delim 
+
     // class for storing content from string
     class string_content{
     private:
-        std::string *object;                 // memory area for writing raw data
-        std::string *delim;                  // memory area for delimiter
-        std::vector<std::string> components; // vector with elements of string
+        std::string *object;                          // memory area for writing raw data
+        std::string *delim;                           // memory area for delimiter
+        string_vect components;                       // vector with elements of string
+        void set(std::string & param, std::string str); // set str to parametr
     public:
         string_content(); // constructors
         string_content(std::string source, std::string delim);
-        ~string_content(); // destructor
-        void set_string(std::string source);   // set string to class
+        ~string_content();                    // destructor
+        void set_string(std::string source);  // set string to class
         void set_delimetr(std::string delim); // set delimiter to class
         std::string get_delim();              // return delimiter
         std::string get_string();             // return string
@@ -28,8 +36,7 @@ namespace WPTool{
         int qual_components_with(char sim);   // return number of components with char
         int component_number_with(char sim);  // return component with char
     };
-
-
+    
 };
 
 #endif 
