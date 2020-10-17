@@ -165,3 +165,28 @@ void WPTool::string_content::erace(int index){
     delete component_pos;
     delete delim_pos;
 } 
+
+//function edit
+//param 1: index of element
+//param 2: replaicement of component
+void WPTool::string_content::edit(int index, std::string repl){
+    int * component_size;
+    component_size = new int(components[index].length());
+    int * component_pos = new int;
+    int * delim_pos = new int;
+    *component_pos = object->find(components[index]);
+    *delim_pos = object->find_first_of(*this->delim,*component_pos); 
+    while ((*delim_pos - *component_pos) != *component_size){ 
+        *component_pos = object->find(components[index],*component_pos+1);
+        *delim_pos = object->find_first_of(*this->delim,*component_pos);
+        if(*delim_pos == std::string::npos){
+            break;
+        }
+    }
+    object->erase(*component_pos,*component_size);
+    object->insert(*component_pos, repl);
+    this->components[index] = repl;
+    delete component_size;
+    delete component_pos;
+    delete delim_pos;
+} 
