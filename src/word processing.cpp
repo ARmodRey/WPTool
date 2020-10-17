@@ -107,15 +107,6 @@ std::string WPTool::string_content::operator[](int index){
     return components.at(index);
 }
 
-// function have
-// param 1: search char 
-bool WPTool::string_content::have(char sim){
-    if(this->object->find(sim) != std::string::npos){
-        return true;
-    }
-    return false;
-}
-
 // function have 
 // param 1: search string
 bool WPTool::string_content::have(std::string str){
@@ -125,3 +116,32 @@ bool WPTool::string_content::have(std::string str){
     return false;
 }
 
+// function qual_components_with
+// param 1: search string
+int WPTool::string_content::qual_components_with(std::string str){
+    int result = 0;
+    for(int i = 0; i < this->components.size(); i++){
+        if(this->components[i].find(str) != std::string::npos){
+            result++;
+        }
+    }
+    return result;
+}
+
+//function component_number_with
+//param 1: search string
+int WPTool::string_content::component_number_with(std::string str){
+    static int result;
+    static std::string object;
+    if(object != str){
+        object = str; 
+        result = 0;
+    }
+    for(int i = result; i < this->components.size(); i++){
+        if(this->components[i].find(str) != std::string::npos){
+            result = i + 1;
+            return i;
+        }
+    }
+    return -1;
+}
