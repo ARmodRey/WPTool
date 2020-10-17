@@ -34,6 +34,7 @@ namespace WPTool{
         bool have(std::string str);                 // if sentence have element return true
         int qual_components_with(std::string str);  // return number of components with string
         int component_number_with(std::string str); // return component with string
+        void erace(int index);                      // delete component       
     };
     
 };

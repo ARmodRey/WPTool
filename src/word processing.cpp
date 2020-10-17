@@ -145,3 +145,23 @@ int WPTool::string_content::component_number_with(std::string str){
     }
     return -1;
 }
+
+//function erase 
+//param 1: index of component
+void WPTool::string_content::erace(int index){
+    int * component_size;
+    component_size = new int(components[index].length());
+    int * component_pos = new int;
+    int * delim_pos = new int;
+    *component_pos = object->find(components[index]);
+    *delim_pos = object->find_first_of(*this->delim,*component_pos); 
+    while ((*delim_pos - *component_pos) != *component_size){ 
+        *component_pos = object->find(components[index],*component_pos+1);
+        *delim_pos = object->find_first_of(*this->delim,*component_pos);
+    }
+    object->erase(*component_pos,*component_size);
+    components.erase(components.begin() + index - 1);
+    delete component_size;
+    delete component_pos;
+    delete delim_pos;
+} 
