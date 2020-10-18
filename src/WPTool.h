@@ -2,8 +2,9 @@
 #define __STRING__CONTENT__H__
 
 #include <string>
-#include "string.h"
 #include <vector>
+#include <algorithm> 
+#include "string.h"
 
 namespace WPTool{
 
@@ -12,7 +13,11 @@ namespace WPTool{
 
     // function to split a string 
     string_vect split_string(std::string source); // separates with a space
-    string_vect split_string(std::string source, std::string delim); // separates with a delim 
+    string_vect split_string(std::string source, std::string delim); // separates with a delim
+
+    // function to flip string
+    void string_reverse(std::string &source);       // revers the given string
+    std::string string_reverse(std::string source); // return reversed string
 
     // class for storing content from string
     class string_content{

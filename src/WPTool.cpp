@@ -1,5 +1,7 @@
-#include "word processing.h"
+#include "WPTool.h"
 
+// function split_string
+// param 1: source string 
 WPTool::string_vect WPTool::split_string(std::string source){
     WPTool::string_vect result;
 #ifdef WIN32 
@@ -21,6 +23,9 @@ WPTool::string_vect WPTool::split_string(std::string source){
     return result; 
 }
 
+// function split_string
+// param 1: source string 
+// param 2: delimeter 
 WPTool::string_vect WPTool::split_string(std::string source, std::string delim){
     WPTool::string_vect result;
 #ifdef WIN32 
@@ -39,6 +44,29 @@ WPTool::string_vect WPTool::split_string(std::string source, std::string delim){
     }
 	delete token;
 #endif
+    return result;
+}
+
+// function string_revers
+// param 1: string for revers
+void WPTool::string_reverse(std::string &source){
+    int n = source.length() - 1;
+    for(int i = 0; i < source.length() / 2; i++){
+        std::swap(source[i],source[n-i]);
+    }
+}
+
+// function string_revers
+// param 1: source string
+std::string WPTool::string_reverse(std::string source){
+    std::string result(source);
+    int temp;
+    int len = result.length();
+    for(int i = 0,j = len - 1; i != len/2; i++, j--){
+        temp = result[i];
+        result[i] = result[j];
+        result[j] = temp;
+    }
     return result;
 }
 
