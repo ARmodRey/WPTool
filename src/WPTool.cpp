@@ -218,3 +218,9 @@ void WPTool::string_content::edit(int index, std::string repl){
     delete component_pos;
     delete delim_pos;
 } 
+
+// function get
+// param 1: index of component
+std::string WPTool::string_content::get(int index){
+    return components[index];
+}
