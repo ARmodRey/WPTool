@@ -40,7 +40,8 @@ namespace WPTool{
         int qual_components_with(std::string str);  // return number of components with string
         int component_number_with(std::string str); // return component with string
         void erace(int index);                      // delete component
-        void edit(int index, std::string repl);     // replase component in string      
+        void edit(int index, std::string repl);     // replase component in string
+        std::string get(int index);                 // return component from index      
     };
     
 };
