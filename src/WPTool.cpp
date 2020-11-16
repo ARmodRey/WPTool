@@ -224,3 +224,13 @@ void WPTool::string_content::edit(int index, std::string repl){
 std::string WPTool::string_content::get(int index){
     return components[index];
 }
+
+// function is_digit
+// param 1: source string 
+bool WPTool::is_digit(std::string source){
+    int found = source.find_first_not_of("-,.1234567890");
+    if(found != std::string::npos){
+        return false;
+    }
+    return true;
+}

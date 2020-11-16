@@ -15,6 +15,9 @@ namespace WPTool{
     string_vect split_string(std::string source); // separates with a space
     string_vect split_string(std::string source, std::string delim); // separates with a delim
 
+    // function checks a string for a number
+    bool is_digit(std::string source);
+
     // function to flip string
     void string_reverse(std::string &source);       // revers the given string
     std::string string_reverse(std::string source); // return reversed string
