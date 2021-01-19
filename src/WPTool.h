@@ -20,7 +20,10 @@ namespace WPTool{
 
     // function to flip string
     void string_reverse(std::string &source);       // revers the given string
-    std::string string_reverse(std::string source); // return reversed string
+    std::string string_reverse(std::string source); // return reversed string               
+
+    // function to replase chars
+    std::string replase(std::string source, char oldChar, char newChar);  
 
     // class for storing content from string
     class string_content{

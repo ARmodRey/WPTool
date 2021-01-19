@@ -234,3 +234,17 @@ bool WPTool::is_digit(std::string source){
     }
     return true;
 }
+
+// function replase
+// param 1: source string 
+// param 2: char to replase
+// param 3: new char
+std::string WPTool::replase(std::string source, char oldChar, char newChar){
+    std::string result = source; 
+    for(int i = 0; i < result.length(); i++){
+        if(result[i] == oldChar){
+            result[i] = newChar; 
+        }
+    }
+    return result;
+}
