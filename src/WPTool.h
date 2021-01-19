@@ -23,7 +23,7 @@ namespace WPTool{
     std::string string_reverse(std::string source); // return reversed string               
 
     // function to replase chars
-    std::string replase(std::string source, char oldChar, char newChar);  
+    std::string replase(std::string source, std::string oldChar, std::string newChar);  
 
     // class for storing content from string
     class string_content{

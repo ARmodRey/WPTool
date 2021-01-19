@@ -70,6 +70,24 @@ std::string WPTool::string_reverse(std::string source){
     return result;
 }
 
+// function replase
+// param 1: source string 
+// param 2: char to replase
+// param 3: new char
+std::string WPTool::replase(std::string source, std::string oldChar, std::string newChar){
+    std::string result = source; 
+    int * found = new int(result.find(oldChar)); // find in string oldChar
+    int * len = new int(oldChar.size()); // cout of chars
+    while (*found != std::string::npos){
+        result.erase(*found, *len); //  remove old chars 
+        result.insert(*found, newChar); // add new chars 
+        *found = result.find(oldChar,*found); // update position
+    }
+    delete len;
+    delete found;
+    return result;
+}
+
 // class constructor 
 WPTool::string_content::string_content(){
     this->object = new std::string; // init object of string
@@ -235,16 +253,3 @@ bool WPTool::is_digit(std::string source){
     return true;
 }
 
-// function replase
-// param 1: source string 
-// param 2: char to replase
-// param 3: new char
-std::string WPTool::replase(std::string source, char oldChar, char newChar){
-    std::string result = source; 
-    for(int i = 0; i < result.length(); i++){
-        if(result[i] == oldChar){
-            result[i] = newChar; 
-        }
-    }
-    return result;
-}
