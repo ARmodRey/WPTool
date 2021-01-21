@@ -88,6 +88,16 @@ std::string WPTool::replase(std::string source, std::string oldChar, std::string
     return result;
 }
 
+// function is_digit
+// param 1: source string 
+bool WPTool::is_digit(std::string source){
+    int found = source.find_first_not_of("-,.1234567890");
+    if(found != std::string::npos){
+        return false;
+    }
+    return true;
+}
+
 // class constructor 
 WPTool::string_content::string_content(){
     this->object = new std::string; // init object of string
@@ -112,17 +122,17 @@ WPTool::string_content::~string_content(){
     delete delim; 
 }
 
-// function get_string
+// method get_string
 std::string WPTool::string_content::get_string(){
     return *object;
 }
 
-// function get_delim
+// method get_delim
 std::string WPTool::string_content::get_delim(){
     return *delim;
 }
 
-// function get_size
+// method get_size
 int WPTool::string_content::get_size(){
     return components.size();
 }
@@ -135,13 +145,13 @@ void WPTool::string_content::set(std::string & param, std::string str){
     components = split_string(*this->object, *this->delim);
 }
 
-// function set_string 
+// method set_string 
 // param 1: source string to retrieve content
 void WPTool::string_content::set_string(std::string source){
     set(*this->object,source);
 }
 
-// function set_delim 
+// method set_delim 
 // param 1: characters to separate the string
 void WPTool::string_content::set_delimetr(std::string delim){
     set(*this->delim,delim);
@@ -153,7 +163,7 @@ std::string WPTool::string_content::operator[](int index){
     return components.at(index);
 }
 
-// function have 
+// method have 
 // param 1: search string
 bool WPTool::string_content::have(std::string str){
     if(this->object->find(str) != std::string::npos){
@@ -162,7 +172,7 @@ bool WPTool::string_content::have(std::string str){
     return false;
 }
 
-// function qual_components_with
+// method qual_components_with
 // param 1: search string
 int WPTool::string_content::qual_components_with(std::string str){
     int result = 0;
@@ -174,8 +184,8 @@ int WPTool::string_content::qual_components_with(std::string str){
     return result;
 }
 
-//function component_number_with
-//param 1: search string
+// method component_number_with
+// param 1: search string
 int WPTool::string_content::component_number_with(std::string str){
     static int result;
     static std::string object;
@@ -192,8 +202,8 @@ int WPTool::string_content::component_number_with(std::string str){
     return -1;
 }
 
-//function erase 
-//param 1: index of component
+// method erase 
+// param 1: index of component
 void WPTool::string_content::erace(int index){
     int * component_size;
     component_size = new int(components[index].length());
@@ -212,9 +222,9 @@ void WPTool::string_content::erace(int index){
     delete delim_pos;
 } 
 
-//function edit
-//param 1: index of element
-//param 2: replaicement of component
+// method edit
+// param 1: index of element
+// param 2: replaicement of component
 void WPTool::string_content::edit(int index, std::string repl){
     int * component_size;
     component_size = new int(components[index].length());
@@ -243,13 +253,10 @@ std::string WPTool::string_content::get(int index){
     return components[index];
 }
 
-// function is_digit
-// param 1: source string 
-bool WPTool::is_digit(std::string source){
-    int found = source.find_first_not_of("-,.1234567890");
-    if(found != std::string::npos){
-        return false;
-    }
-    return true;
+// method replase
+// param 1: old chars 
+// parem 2: new chars  
+void WPTool::string_content::replase(std::string oldChar, std::string newChar){
+    *this->object = WPTool::replase(*this->object, oldChar, newChar); 
+    set_string(*this->object); 
 }
-
