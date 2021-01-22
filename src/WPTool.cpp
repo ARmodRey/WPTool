@@ -107,6 +107,15 @@ WPTool::string_content::string_content(){
 // class constructor 
 // param 1: source string to retrieve content
 // param 2: characters to separate the string
+WPTool::string_content::string_content(std::string source){
+    this->object = new std::string(source); // init object of string
+    this->delim = new std::string(" \t");   // init object of delimiter
+    this->components = split_string(*this->object);
+}
+
+// class constructor 
+// param 1: source string to retrieve content
+// param 2: characters to separate the string
 WPTool::string_content::string_content(std::string source, std::string delim){
     this->object = new std::string(source); // init object of string
     this->delim = new std::string(delim); // init object of delimiter
@@ -123,17 +132,17 @@ WPTool::string_content::~string_content(){
 }
 
 // method get_string
-std::string WPTool::string_content::get_string(){
+std::string WPTool::string_content::string(){
     return *object;
 }
 
 // method get_delim
-std::string WPTool::string_content::get_delim(){
+std::string WPTool::string_content::delimeter(){
     return *delim;
 }
 
 // method get_size
-int WPTool::string_content::get_size(){
+int WPTool::string_content::size(){
     return components.size();
 }
 
@@ -174,7 +183,7 @@ bool WPTool::string_content::have(std::string str){
 
 // method qual_components_with
 // param 1: search string
-int WPTool::string_content::qual_components_with(std::string str){
+int WPTool::string_content::count(std::string str){
     int result = 0;
     for(int i = 0; i < this->components.size(); i++){
         if(this->components[i].find(str) != std::string::npos){
@@ -186,7 +195,7 @@ int WPTool::string_content::qual_components_with(std::string str){
 
 // method component_number_with
 // param 1: search string
-int WPTool::string_content::component_number_with(std::string str){
+int WPTool::string_content::find(std::string str){
     static int result;
     static std::string object;
     if(object != str){
