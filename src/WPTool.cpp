@@ -49,7 +49,7 @@ WPTool::string_vect WPTool::split_string(std::string source, std::string delim){
 
 // function string_revers
 // param 1: string for revers
-void WPTool::string_reverse(std::string &source){
+void WPTool::reverse(std::string &source){
     int n = source.length() - 1;
     for(int i = 0; i < source.length() / 2; i++){
         std::swap(source[i],source[n-i]);
@@ -58,7 +58,7 @@ void WPTool::string_reverse(std::string &source){
 
 // function string_revers
 // param 1: source string
-std::string WPTool::string_reverse(std::string source){
+std::string WPTool::reverse(std::string source){
     std::string result(source);
     int temp;
     int len = result.length();

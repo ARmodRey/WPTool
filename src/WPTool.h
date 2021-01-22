@@ -19,8 +19,8 @@ namespace WPTool{
     bool is_digit(std::string source);
 
     // function to flip string
-    void string_reverse(std::string &source);       // revers the given string
-    std::string string_reverse(std::string source); // return reversed string               
+    void reverse(std::string &source);       // revers the given string
+    std::string reverse(std::string source); // return reversed string               
 
     // function to replase chars
     std::string replase(std::string source, std::string oldChar, std::string newChar);  
@@ -46,7 +46,7 @@ namespace WPTool{
         std::string operator[](int index);          // return component from index
         std::string get(int index);                 // return component from index      
         bool have(std::string str);                 // if sentence have element return true
-        int count(std::string str);  // return number of components with string
+        int count(std::string str);                 // return number of components with string
         int find(std::string str);                  // return component with string
         void erace(int index);                      // delete component
         void edit(int index, std::string repl);     // replase component in string
