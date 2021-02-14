@@ -42,14 +42,14 @@ namespace WPTool{
         std::string delimeter();                    // return delimiter
         std::string string();                       // return string
         void replase(std::string oldChar, std::string newChar);
-        int size();                                 // return count of elements
-        std::string operator[](int index);          // return component from index
-        std::string get(int index);                 // return component from index      
-        bool have(std::string str);                 // if sentence have element return true
-        int count(std::string str);                 // return number of components with string
-        int find(std::string str);                  // return component with string
-        void erace(int index);                      // delete component
-        void edit(int index, std::string repl);     // replase component in string
+        int size();                             // return count of elements
+        std::string operator[](int index);      // return component from index
+        std::string get(int index);             // return component from index      
+        bool have(std::string str);             // if sentence have element return true
+        int count(std::string str);             // return number of components with string
+        void erace(int index);                  // delete component
+        void edit(int index, std::string repl); // replase component in string
+        int find(std::string str, int start = 0, int end = 0); // return component with string
     };
     
 };

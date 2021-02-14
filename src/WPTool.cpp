@@ -195,17 +195,21 @@ int WPTool::string_content::count(std::string str){
 
 // method component_number_with
 // param 1: search string
-int WPTool::string_content::find(std::string str){
+int WPTool::string_content::find(std::string str, int start, int end){
     static int result;
+    static int _start;
+    static int _end;
     static std::string object;
-    if(object != str){
+    if(object != str || start < _start || end < _end){
         object = str; 
         result = 0;
+        _start = start;
+        _end = end;
     }
-    for(int i = result; i < this->components.size(); i++){
-        if(this->components[i].find(str) != std::string::npos){
-            result = i + 1;
-            return i;
+    for(int count = result; count < this->components.size(); count++){
+        if(this->components[count].find(str) != std::string::npos){
+            result = count + 1;
+            return count;
         }
     }
     return -1;
