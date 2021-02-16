@@ -202,7 +202,7 @@ int WPTool::string_content::find(std::string str, int start, int end){
     static std::string object;
     if(object != str || start < _start || end < _end){
         object = str; 
-        result = 0;
+        result = _start;
         _start = start;
         _end = end;
     }
@@ -218,10 +218,10 @@ int WPTool::string_content::find(std::string str, int start, int end){
 // method erase 
 // param 1: index of component
 void WPTool::string_content::erace(int index){
-    int * component_size;
-    component_size = new int(components[index].length());
-    int * component_pos = new int;
-    int * delim_pos = new int;
+    size_t * component_size = new size_t;
+    size_t * component_pos = new size_t;
+    size_t * delim_pos = new size_t;
+    *component_size = components[index].size();
     *component_pos = object->find(components[index]);
     *delim_pos = object->find_first_of(*this->delim,*component_pos); 
     while ((*delim_pos - *component_pos) != *component_size){ 
@@ -239,17 +239,17 @@ void WPTool::string_content::erace(int index){
 // param 1: index of element
 // param 2: replaicement of component
 void WPTool::string_content::edit(int index, std::string repl){
-    int * component_size;
-    component_size = new int(components[index].length());
-    int * component_pos = new int;
-    int * delim_pos = new int;
+    size_t * component_size = new size_t;
+    size_t * component_pos = new size_t;
+    size_t * delim_pos = new size_t;
+    *component_size = components[index].size();
     *component_pos = object->find(components[index]);
     *delim_pos = object->find_first_of(*this->delim,*component_pos); 
-    while ((*delim_pos - *component_pos) != *component_size){ 
+    while ((*delim_pos - *component_pos) == *component_size - 1 ){ 
         *component_pos = object->find(components[index],*component_pos+1);
         *delim_pos = object->find_first_of(*this->delim,*component_pos);
         if(*delim_pos == std::string::npos){
-            break;
+            *delim_pos = object->size() - 1;
         }
     }
     object->erase(*component_pos,*component_size);
